@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 – Extraction rates calculation —- | Migration of Fishery SUA and FBS compilation into the SWS</title>
+  <meta name="description" content="This online book describes the migration of the statistical processes performed by the FAO Fisheries and Aquaculture Department into the Corporate Statistical Working System (SWS) for the compilation of Supply Utilization Accounts (SUAs) and Food Balance Sheets (FBSs) ." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 – Extraction rates calculation —- | Migration of Fishery SUA and FBS compilation into the SWS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This online book describes the migration of the statistical processes performed by the FAO Fisheries and Aquaculture Department into the Corporate Statistical Working System (SWS) for the compilation of Supply Utilization Accounts (SUAs) and Food Balance Sheets (FBSs) ." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 – Extraction rates calculation —- | Migration of Fishery SUA and FBS compilation into the SWS" />
+  
+  <meta name="twitter:description" content="This online book describes the migration of the statistical processes performed by the FAO Fisheries and Aquaculture Department into the Corporate Statistical Working System (SWS) for the compilation of Supply Utilization Accounts (SUAs) and Food Balance Sheets (FBSs) ." />
+  
+
+<meta name="author" content="Charlotte Taglioni (Statistician, ESSD - Methodological Innovation Team)" />
+
+
+<meta name="date" content="2020-03-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="PluginCode.html"/>
+<link rel="next" href="ShinyDes.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="ess.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#introduction"><strong>Introduction</strong></a><ul>
+<li><a href="index.html#migration-actors"><strong>Migration actors</strong></a></li>
+<li><a href="index.html#new-fias-methodology"><strong>New FIAS methodology</strong></a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>SUAs/FBS for fish and fish products (based on FIAS documentation)</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#working-system-of-fao-fias-for-the-calculation-of-suas-and-fbs"><i class="fa fa-check"></i>Working system of FAO FIAS for the calculation of SUAs and FBS</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#standardization-to-fbs"><i class="fa fa-check"></i>Standardization to FBS</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#fias-processed-production-in-sws-proposed-workflow"><i class="fa fa-check"></i>FIAS processed production in SWS: proposed workflow</a></li>
+</ul></li>
+<li><a href="index.html#sws-resources"><strong>SWS resources</strong></a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#code-lists"><i class="fa fa-check"></i>Code lists</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#data-tables"><i class="fa fa-check"></i>Data tables</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#datasets"><i class="fa fa-check"></i>Datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#definition-and-conversion-of-sua-fbs-elements"><i class="fa fa-check"></i>Definition and conversion of SUA-FBS Elements</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#sua-element-conversion"><i class="fa fa-check"></i>SUA element conversion</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#fias-standardized-fbs-element-conversion"><i class="fa fa-check"></i>FIAS standardized FBS element conversion</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#faostat-standardized-fbs-element-conversion"><i class="fa fa-check"></i>Faostat standardized FBS element conversion</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#flag-conversion"><i class="fa fa-check"></i>Flag conversion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="PluginDes.html"><a href="PluginDes.html"><i class="fa fa-check"></i><b>1</b> <strong>SUA-FBS compilation process</strong></a><ul>
+<li class="chapter" data-level="1.1" data-path="PluginDes.html"><a href="PluginDes.html#initiate-plugin"><i class="fa fa-check"></i><b>1.1</b> Initiate plugin</a></li>
+<li class="chapter" data-level="1.2" data-path="PluginDes.html"><a href="PluginDes.html#pull-data-to-sua"><i class="fa fa-check"></i><b>1.2</b> Pull data to SUA</a></li>
+<li class="chapter" data-level="1.3" data-path="PluginDes.html"><a href="PluginDes.html#fill-sua"><i class="fa fa-check"></i><b>1.3</b> Fill SUA</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="PluginDes.html"><a href="PluginDes.html#extraction-rate-and-input-calculation"><i class="fa fa-check"></i><b>1.3.1</b> Extraction rate and input calculation</a></li>
+<li class="chapter" data-level="1.3.2" data-path="PluginDes.html"><a href="PluginDes.html#food-processing-calculation-and-balancing"><i class="fa fa-check"></i><b>1.3.2</b> Food processing calculation and balancing</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="PluginDes.html"><a href="PluginDes.html#sua-with-nutrients"><i class="fa fa-check"></i><b>1.4</b> SUA with nutrients</a></li>
+<li class="chapter" data-level="1.5" data-path="PluginDes.html"><a href="PluginDes.html#standardization"><i class="fa fa-check"></i><b>1.5</b> Standardization</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="PluginCode.html"><a href="PluginCode.html"><i class="fa fa-check"></i><b>2</b> <strong>fi_SUA-FBS plugin R code</strong></a><ul>
+<li class="chapter" data-level="2.1" data-path="PluginCode.html"><a href="PluginCode.html#main-file"><i class="fa fa-check"></i><b>2.1</b> Main file</a></li>
+<li class="chapter" data-level="2.2" data-path="PluginCode.html"><a href="PluginCode.html#external-functions"><i class="fa fa-check"></i><b>2.2</b> External functions</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="PluginCode.html"><a href="PluginCode.html#extraction-rates"><i class="fa fa-check"></i><b>2.2.1</b> Extraction rates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="extraction-rates-calculation-.html"><a href="extraction-rates-calculation-.html"><i class="fa fa-check"></i><b>3</b> – Extraction rates calculation —-</a><ul>
+<li class="chapter" data-level="3.0.1" data-path="extraction-rates-calculation-.html"><a href="extraction-rates-calculation-.html#input"><i class="fa fa-check"></i><b>3.0.1</b> Input</a></li>
+<li class="chapter" data-level="3.0.2" data-path="extraction-rates-calculation-.html"><a href="extraction-rates-calculation-.html#food-processing"><i class="fa fa-check"></i><b>3.0.2</b> Food Processing</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ShinyDes.html"><a href="ShinyDes.html"><i class="fa fa-check"></i><b>4</b> <strong>SUA-FBS Validation Shiny application</strong></a><ul>
+<li class="chapter" data-level="4.1" data-path="ShinyDes.html"><a href="ShinyDes.html#token-tab"><i class="fa fa-check"></i><b>4.1</b> <strong>Token tab</strong></a></li>
+<li class="chapter" data-level="4.2" data-path="ShinyDes.html"><a href="ShinyDes.html#overview-tab"><i class="fa fa-check"></i><b>4.2</b> <strong>Overview tab</strong></a></li>
+<li class="chapter" data-level="4.3" data-path="ShinyDes.html"><a href="ShinyDes.html#sua-compare-tab"><i class="fa fa-check"></i><b>4.3</b> <strong>SUA compare tab</strong></a></li>
+<li class="chapter" data-level="4.4" data-path="ShinyDes.html"><a href="ShinyDes.html#sua-imbalance-tab"><i class="fa fa-check"></i><b>4.4</b> <strong>SUA imbalance tab</strong></a></li>
+<li class="chapter" data-level="4.5" data-path="ShinyDes.html"><a href="ShinyDes.html#fbs-by-ics-tab"><i class="fa fa-check"></i><b>4.5</b> <strong>FBS by ICS tab</strong></a></li>
+<li class="chapter" data-level="4.6" data-path="ShinyDes.html"><a href="ShinyDes.html#ics-by-element-tab"><i class="fa fa-check"></i><b>4.6</b> <strong>ICS by element tab</strong></a></li>
+<li class="chapter" data-level="4.7" data-path="ShinyDes.html"><a href="ShinyDes.html#global-production-tab"><i class="fa fa-check"></i><b>4.7</b> <strong>Global Production tab</strong></a></li>
+<li class="chapter" data-level="4.8" data-path="ShinyDes.html"><a href="ShinyDes.html#commodities-tab"><i class="fa fa-check"></i><b>4.8</b> <strong>Commodities tab</strong></a></li>
+<li class="chapter" data-level="4.9" data-path="ShinyDes.html"><a href="ShinyDes.html#link-table-tab"><i class="fa fa-check"></i><b>4.9</b> <strong>Link table tab</strong></a></li>
+<li class="chapter" data-level="4.10" data-path="ShinyDes.html"><a href="ShinyDes.html#extraction-rates-tab"><i class="fa fa-check"></i><b>4.10</b> <strong>Extraction rates tab</strong></a></li>
+<li class="chapter" data-level="4.11" data-path="ShinyDes.html"><a href="ShinyDes.html#data-validation-tab"><i class="fa fa-check"></i><b>4.11</b> <strong>Data validation tab</strong></a></li>
+<li class="chapter" data-level="4.12" data-path="ShinyDes.html"><a href="ShinyDes.html#data-update-tab"><i class="fa fa-check"></i><b>4.12</b> <strong>Data update tab</strong></a></li>
+<li class="chapter" data-level="4.13" data-path="ShinyDes.html"><a href="ShinyDes.html#data-saving-tab"><i class="fa fa-check"></i><b>4.13</b> <strong>Data saving tab</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ShinyCode.html"><a href="ShinyCode.html"><i class="fa fa-check"></i><b>5</b> <strong>The Fisheries SUA-FBS Shiny R code</strong></a><ul>
+<li class="chapter" data-level="5.1" data-path="ShinyCode.html"><a href="ShinyCode.html#global.r-file"><i class="fa fa-check"></i><b>5.1</b> <strong>‘global.R’ file</strong></a></li>
+<li class="chapter" data-level="5.2" data-path="ShinyCode.html"><a href="ShinyCode.html#ui.r-file"><i class="fa fa-check"></i><b>5.2</b> <strong>‘ui.R’ file</strong></a></li>
+<li class="chapter" data-level="5.3" data-path="ShinyCode.html"><a href="ShinyCode.html#server.r-file"><i class="fa fa-check"></i><b>5.3</b> <strong>‘server.R’ file</strong></a><ul>
+<li class="chapter" data-level="5.3.1" data-path="ShinyCode.html"><a href="ShinyCode.html#overview-tab-1"><i class="fa fa-check"></i><b>5.3.1</b> ‘Overview’ tab</a></li>
+<li class="chapter" data-level="5.3.2" data-path="ShinyCode.html"><a href="ShinyCode.html#sua-compare-tab-1"><i class="fa fa-check"></i><b>5.3.2</b> ‘SUA compare’ tab</a></li>
+<li class="chapter" data-level="5.3.3" data-path="ShinyCode.html"><a href="ShinyCode.html#sua-imbalance-tab-1"><i class="fa fa-check"></i><b>5.3.3</b> ‘SUA imbalance’ tab</a></li>
+<li class="chapter" data-level="5.3.4" data-path="ShinyCode.html"><a href="ShinyCode.html#fbs-by-ics-tab-1"><i class="fa fa-check"></i><b>5.3.4</b> ‘FBS by ICS’ tab</a></li>
+<li class="chapter" data-level="5.3.5" data-path="ShinyCode.html"><a href="ShinyCode.html#ics-by-element-tab-1"><i class="fa fa-check"></i><b>5.3.5</b> ‘ICS by Element’ tab</a></li>
+<li class="chapter" data-level="5.3.6" data-path="ShinyCode.html"><a href="ShinyCode.html#global-production-tab-1"><i class="fa fa-check"></i><b>5.3.6</b> ‘Global production’ tab</a></li>
+<li class="chapter" data-level="5.3.7" data-path="ShinyCode.html"><a href="ShinyCode.html#commodities-tab-1"><i class="fa fa-check"></i><b>5.3.7</b> ‘Commodities’ tab</a></li>
+<li class="chapter" data-level="5.3.8" data-path="ShinyCode.html"><a href="ShinyCode.html#link-table-tab-1"><i class="fa fa-check"></i><b>5.3.8</b> ‘Link table’ tab</a></li>
+<li class="chapter" data-level="5.3.9" data-path="ShinyCode.html"><a href="ShinyCode.html#extraction-rates-tab-1"><i class="fa fa-check"></i><b>5.3.9</b> ‘Extraction rates’ tab</a></li>
+<li class="chapter" data-level="5.3.10" data-path="ShinyCode.html"><a href="ShinyCode.html#data-validation-tab-1"><i class="fa fa-check"></i><b>5.3.10</b> ‘Data validation’ tab</a></li>
+<li class="chapter" data-level="5.3.11" data-path="ShinyCode.html"><a href="ShinyCode.html#data-update-tab-1"><i class="fa fa-check"></i><b>5.3.11</b> ‘Data update’ tab</a></li>
+<li class="chapter" data-level="5.3.12" data-path="ShinyCode.html"><a href="ShinyCode.html#data-saving-tab-1"><i class="fa fa-check"></i><b>5.3.12</b> ‘Data saving’ tab</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="ShinyCode.html"><a href="ShinyCode.html#external-functions-1"><i class="fa fa-check"></i><b>5.4</b> External functions</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="ShinyCode.html"><a href="ShinyCode.html#gprecalc"><i class="fa fa-check"></i><b>5.4.1</b> GPrecalc</a></li>
+<li class="chapter" data-level="5.4.2" data-path="ShinyCode.html"><a href="ShinyCode.html#cdbrecalc"><i class="fa fa-check"></i><b>5.4.2</b> CDBrecalc</a></li>
+<li class="chapter" data-level="5.4.3" data-path="ShinyCode.html"><a href="ShinyCode.html#suaunbalcalc"><i class="fa fa-check"></i><b>5.4.3</b> SUAunbalCalc</a></li>
+<li class="chapter" data-level="5.4.4" data-path="ShinyCode.html"><a href="ShinyCode.html#suabalcalc"><i class="fa fa-check"></i><b>5.4.4</b> SUAbalCalc</a></li>
+<li class="chapter" data-level="5.4.5" data-path="ShinyCode.html"><a href="ShinyCode.html#suanutrcalc"><i class="fa fa-check"></i><b>5.4.5</b> SUAnutrCalc</a></li>
+<li class="chapter" data-level="5.4.6" data-path="ShinyCode.html"><a href="ShinyCode.html#fbscalc"><i class="fa fa-check"></i><b>5.4.6</b> FBScalc</a></li>
+<li class="chapter" data-level="5.4.7" data-path="ShinyCode.html"><a href="ShinyCode.html#reloaddata"><i class="fa fa-check"></i><b>5.4.7</b> reloadData</a></li>
+<li class="chapter" data-level="5.4.8" data-path="ShinyCode.html"><a href="ShinyCode.html#reloaddatatoken"><i class="fa fa-check"></i><b>5.4.8</b> reloadDataToken</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Migration of Fishery SUA and FBS compilation into the SWS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="extraction-rates-calculation--" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> – Extraction rates calculation —-</h1>
+<pre><code>eRcomputation &lt;- function(data,  tree, 
+                          oldEr = NULL, years){
+  
+  newYear &lt;- max(as.numeric(years))
+  ## the principal ingredient to compute the foodProcessing is the extraction rates
+  ## for those items that already have a protected figures for 31 the default extractio rate 
+  ## in the commodity tree has to be updated:
+  
+  dataProd &lt;- data[measuredElementSuaFbs==&quot;5510&quot;]
+  dataInput &lt;- data[measuredElementSuaFbs==&quot;5302&quot;]
+  
+  # Take all secondary products
+  Er0 &lt;- unique(data[ !measuredItemFaostat_L2 %in% primary, .(geographicAreaM49_fi, timePointYears,  measuredItemFaostat_L2, availability)])
+  Er0[ , measuredElementSuaFbs := &#39;5423&#39;]
+  
+  if(nrow(dataInput) &gt; 0){
+    computeExtractionRate &lt;- merge(dataProd, dataInput, 
+                                   by = c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;, 
+                                          &quot;measuredItemFaostat_L2&quot;, &quot;availability&quot;), 
+                                   suffixes = c(&quot;_prod&quot;,&quot;_input&quot;))
+    computeExtractionRate[ , extraction_rate_C := Value_prod/Value_input]
+     
+    setnames(computeExtractionRate,c(&quot;extraction_rate_C&quot;), &quot;Value&quot;)
+    computeExtractionRate &lt;- computeExtractionRate[, .(geographicAreaM49_fi, timePointYears, measuredItemFaostat_L2, availability, Value)]
+    computeExtractionRate[ , &#39;:=&#39; (flagObservationStatus = &quot;I&quot;, flagMethod = &quot;i&quot; ) ] 
+    
+    input2Er &lt;- merge(Er0, computeExtractionRate, by = c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;,
+                                                          &quot;measuredItemFaostat_L2&quot;, &quot;availability&quot;), all.x = TRUE)
+  } else {
+    # If no Input then nothing happens
+    input2Er &lt;- Er0[ , &#39;:=&#39; (Value = 0, flagObservationStatus = &quot;M&quot;, flagMethod = &quot;u&quot; ) ] 
+  }
+  
+  # Historical data
+  if(!is.null(oldEr)){
+    
+    if(nrow(oldEr) &gt; 0){
+    
+    old2newEr &lt;- merge(input2Er, oldEr, by = c(&#39;geographicAreaM49_fi&#39;, &#39;measuredElementSuaFbs&#39;,
+                                            &#39;measuredItemFaostat_L2&#39;, &#39;timePointYears&#39;), 
+                       all.x = TRUE, suffixes = c(&#39;&#39;, &#39;Series&#39;))
+    
+    old2newEr[is.na(Value) | Value == 0, c(&#39;Value&#39;, 
+                                           &#39;flagObservationStatus&#39;,
+                                           &#39;flagMethod&#39;) := list(ValueSeries,
+                                                                 flagObservationStatusSeries,
+                                                                 flagMethodSeries)]
+    
+    old2newEr[ , c(&quot;ValueSeries&quot;, &quot;flagObservationStatusSeries&quot;,
+                 &quot;flagMethodSeries&quot;, &quot;availabilitySeries&quot;) := NULL]
+    
+    # Carry forward are flagged as (E, t)
+    carryforward &lt;- data.table()
+    for(i in 1:length(years)){
+      previous &lt;- oldEr[timePointYears == as.character(as.numeric(years[i])-1)]
+      missing &lt;- old2newEr[timePointYears == years[i]][is.na(Value) | Value == 0]
+      
+      # Only previous available values taken
+      carryforward2append &lt;- merge(previous, missing, by = c(&#39;geographicAreaM49_fi&#39;,
+                                                             &#39;measuredElementSuaFbs&#39;,
+                                                             &#39;measuredItemFaostat_L2&#39;),
+                                   suffixes = c(&#39;Prev&#39;, &#39;&#39;))
+      carryforward2append[ , c(&#39;Value&#39;, 
+                               &#39;flagObservationStatus&#39;,
+                               &#39;flagMethod&#39;) := list(ValuePrev,
+                                                     flagObservationStatusPrev,
+                                                     flagMethodPrev)]
+      carryforward2append[ , names(carryforward2append)[grepl(&#39;Prev&#39;, names(carryforward2append))] := NULL]
+      
+      carryforward &lt;- rbind(carryforward, carryforward2append)
+      }
+    
+    ErFromData &lt;- merge(old2newEr, carryforward, by = c(&#39;geographicAreaM49_fi&#39;,
+                                                        &#39;measuredElementSuaFbs&#39;,
+                                                        &#39;measuredItemFaostat_L2&#39;,
+                                                        &#39;timePointYears&#39;,
+                                                        &#39;availability&#39;),
+                        all.x = TRUE, suffixes = c(&#39;&#39;, &#39;CF&#39;))
+    
+    ErFromData[is.na(Value) | Value == 0, c(&#39;Value&#39;, 
+                                            &#39;flagObservationStatus&#39;,
+                                            &#39;flagMethod&#39;) := list(ValueCF,
+                                                                  &#39;E&#39;, &#39;t&#39;)]
+    ErFromData[ , names(ErFromData)[grepl(&#39;CF&#39;, names(ErFromData))] := NULL]
+    
+  
+    } else {
+    ErFromData &lt;- input2Er
+  }
+    
+  } else{
+    ErFromData &lt;- input2Er
+  }
+  
+  # Add default Er if still any missing
+  DefEr &lt;- merge(ErFromData, tree[!is.na(extraction_rate) , .(child, extraction_rate)], 
+                       by.x = c(&quot;measuredItemFaostat_L2&quot;), by.y = c(&quot;child&quot;), all.x = TRUE)
+  # Flag for default extraction rate is (I, c) = Imputed, Copied from elsewhere in the working system
+  DefEr[is.na(Value) | Value == 0, c(&#39;Value&#39;, 
+                                         &#39;flagObservationStatus&#39;,
+                                         &#39;flagMethod&#39;) := list(extraction_rate,
+                                                               &#39;I&#39;, &#39;c&#39;)]
+  DefEr[ , extraction_rate := NULL]
+  
+  eRadded &lt;- DefEr[!is.na(Value)]
+  setkey(eRadded)
+  eRadded &lt;- unique(eRadded)
+  dataEr &lt;- rbind(data[measuredElementSuaFbs != &#39;5423&#39;], eRadded)
+  setkey(dataEr)
+  dataEr &lt;- unique(dataEr)
+}</code></pre>
+<div id="input" class="section level3">
+<h3><span class="header-section-number">3.0.1</span> Input</h3>
+<pre><code>#-- Input calculation ----
+
+inputComputation &lt;- function(data){ #, treeNewER){
+ 
+  # Isolate needed elements
+  # Previous input available
+  input &lt;-  data[ !measuredItemFaostat_L2 %in% primary &amp; measuredElementSuaFbs == &#39;5302&#39;, ]
+  
+  #Er and production needed to compute input if no previous data
+  Er &lt;- data[ !measuredItemFaostat_L2 %in% primary &amp; measuredElementSuaFbs == &#39;5423&#39;, ]
+  Prod &lt;- data[ !measuredItemFaostat_L2 %in% primary &amp; measuredElementSuaFbs == &#39;5510&#39;, ]
+  
+  # Calculate Input
+  InputCalc &lt;- merge(Prod, Er, by = c(&quot;geographicAreaM49_fi&quot;,
+                                      &quot;timePointYears&quot;, &quot;measuredItemFaostat_L2&quot;,
+                                      &quot;availability&quot;), suffixes = c(&quot;_prod&quot;, &quot;_Er&quot;))
+  InputCalc &lt;- InputCalc[!is.na(Value_Er)]
+  if(nrow(InputCalc[is.na(Value_Er)]) &gt; 0 ){
+  message(&#39;Missing extraction rates for some Ics groups&#39;)
+  }
+  
+  InputCalc[ , input := Value_prod / Value_Er]
+  
+  data_compute31 &lt;- melt(InputCalc,
+                       id.vars = c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;,  &quot;measuredItemFaostat_L2&quot;, &quot;availability&quot;),
+                       measure.vars = &quot;input&quot;,
+                       value.name = &quot;Value&quot; ,
+                       variable.name = &quot;measuredElementSuaFbs&quot;, variable.factor = FALSE)
+
+  
+  data_compute31[measuredElementSuaFbs==&quot;input&quot;,measuredElementSuaFbs:=&quot;5302&quot;]
+  data_compute31[ , &#39;:=&#39;(flagObservationStatus = &#39;I&#39;, flagMethod = &#39;i&#39;, FBSsign = 0)]
+  
+  # See if any official input
+  comp31 &lt;- merge(data_compute31, input, by = c(&quot;geographicAreaM49_fi&quot;, 
+                                &quot;timePointYears&quot;,  
+                                &quot;measuredItemFaostat_L2&quot;, 
+                                &quot;availability&quot;, 
+                                &quot;measuredElementSuaFbs&quot;), all = TRUE,
+                  suff = c(&#39;&#39;, &#39;Official&#39;))
+  
+  # If previous data is not NA then it is assigned as input 
+  # Note: the Er should have been computed as ratio between Production and Input
+  comp31[!is.na(ValueOfficial), c(&#39;Value&#39;,&#39;flagObservationStatus&#39;,&#39;flagMethod&#39;):= list(ValueOfficial, 
+                                                                                       flagObservationStatusOfficial,
+                                                                                       flagMethodOfficial)]
+  
+  comp31 &lt;- comp31[ , c(&#39;ValueOfficial&#39;, &#39;flagObservationStatusOfficial&#39;,
+                       &#39;flagMethodOfficial&#39;) := NULL]
+  
+  # Remove all input data from the original data and add the only data31 part
+  # existing data are included as computed with computed extraction rates
+  # other input data are computed starting from given extraction rates
+  dataNo31 &lt;- data[measuredElementSuaFbs!=&quot;5302&quot;]
+  SUAinput &lt;- rbind(dataNo31, comp31[,.(geographicAreaM49_fi, timePointYears,  measuredItemFaostat_L2, availability, measuredElementSuaFbs, Value, flagObservationStatus, flagMethod)]) #rbind(data, data_compute31) #
+  return(SUAinput)
+  
+}</code></pre>
+</div>
+<div id="food-processing" class="section level3">
+<h3><span class="header-section-number">3.0.2</span> Food Processing</h3>
+<pre><code>#-- Food processing calculation ----
+
+foodProcessingComputation &lt;- function(SUAinput, treeNewER){
+  
+  #-- Primary processing ----
+  
+  # Tree only with primary
+  treePrimary &lt;- treeNewER[parent %in%  primary]
+  treePrimary[, child:=as.character(child)]
+  
+  data_compute131 &lt;- copy(SUAinput)
+  setnames(data_compute131, &quot;measuredItemFaostat_L2&quot;, &quot;child&quot;)
+  data_compute131tree &lt;- merge(data_compute131, treePrimary, by=c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;, &quot;child&quot;))
+  
+  # sum all the inputs
+  data_compute131tree[ measuredElementSuaFbs==&quot;5302&quot; , processing:=sum(Value, na.rm = TRUE), by=c(&quot;geographicAreaM49_fi&quot;,
+                                                                                        &quot;timePointYears&quot;,
+                                                                                        &quot;parent&quot;)]
+  
+  # processing is unique for each primary parent so take only these values
+  # data_compute131processing = Total input 5302 by parent
+  setkey(data_compute131tree)
+  data_compute131processing &lt;- unique(data_compute131tree[!is.na(processing),.(geographicAreaM49_fi, parent,timePointYears, processing)])
+  setnames(data_compute131processing, &quot;parent&quot;, &quot;measuredItemFaostat_L2&quot;)
+  
+  ## The total &#39;food processing&#39; (input to cover) has been just computed for any Primary Parent, 
+  ## we have to compare the &#39;new component&#39; based on the sum of all the child-input
+  ## with the actual primary availability, in order to be sure that the new availabily
+  ## (computed including the just computed food processing in the primary SUA line) does not produce
+  ## a negative imbalance.
+  
+  data131 &lt;- merge(SUAinput, data_compute131processing, by=c( &quot;geographicAreaM49_fi&quot;,&quot;measuredItemFaostat_L2&quot;,&quot;timePointYears&quot;), all.x = TRUE)
+  
+  # take only the processing to check availability
+  setkey(data131)
+  data131 &lt;- unique(data131[!is.na(processing),.(geographicAreaM49_fi, measuredItemFaostat_L2, timePointYears, availability, processing)])
+  
+  ## SeconLevelProcessing variable is computed to evaluate which primary availabilities are lower than the 
+  ## food processing. 
+  # secondLevelProcessing &lt; 0 quantity left to cover (Not enough primary for all processing)
+  # secondLevelProcessing &gt; 0 primary availability exceeding processing
+  data131[, secondLevelProcessing := availability-processing]
+  
+  # If not enough availability then the processing imputable to primary parent is put equal to the availability 
+  data131[secondLevelProcessing &lt; 0, processing := availability]
+  
+  # Primary measuredItemFaostat_L2 from which not enough availability to cover processing
+  secondLevelProcessing &lt;- data131[secondLevelProcessing &lt; 0]
+  setnames(secondLevelProcessing, &quot;measuredItemFaostat_L2&quot;, &quot;parent&quot;)
+  problems &lt;- list()
+  
+  #-- Secondary processing  ----
+  
+  if(nrow(secondLevelProcessing) &gt; 0) {
+  
+  # merge by parent so that secondary parents can be found
+  # toDeviate has dimensions: (parent_primary, geographicAreaM49_fi, timePointYears,
+  #   availability, processing, secondLevelProcessing, parent_secondary, weight, extraction_rate, rank)
+  
+  toDeviate &lt;- merge(secondLevelProcessing, treeNewER[weight != FALSE], by=c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;, &quot;parent&quot;), allow.cartesian = TRUE)
+  setnames(toDeviate, c(&quot;parent&quot;,&quot;child&quot;), c(&quot;parent_primary&quot;,&quot;parent_secondary&quot;))
+  
+  # # tree only with possible secondary parents
+  # secondary &lt;- treeNewER[!parent %in% primary, unique(parent)]
+  # 
+  # # Keep a child only if it can also be a (secondary) parent
+  # toDeviate &lt;- toDeviate[parent_secondary %in% secondary]
+  
+  # compare imbalance with rank 1 parent availability
+  toDeviate2proc &lt;- merge(toDeviate, SUAinput, by.x = c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;,  &quot;parent_secondary&quot;),
+                          by.y = c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;,  &quot;measuredItemFaostat_L2&quot;), suffixes = c(&#39;_primary&#39;,&#39;_secondary&#39;))
+  
+  # Make sure primary availability covers at least the rank 1 child
+  rank1availCheck &lt;- toDeviate2proc[parent_secondary %in%  unique(treeNewER[rank == 1 ]$parent) &amp;
+                                      measuredElementSuaFbs == &#39;5302&#39; &amp; 
+                                      Value &gt; availability_primary ]
+  
+  if(nrow(rank1availCheck) &gt; 0){
+    msg1 &lt;- paste(&#39;Not enough primary availability for groups: &#39;, paste(unique(rank1availCheck$parent_primary), collapse = &quot;,&quot;),
+                  &#39;for years: &#39;, paste(unique(rank1availCheck$timePointYears), collapse = &quot;,&quot;), 
+                  &#39;and country&#39;, paste(unique(rank1availCheck$geographicAreaM49_fi), collapse = &quot;,&quot;))
+    message(msg1)
+    rank1availCheck
+    
+  }               
+  
+  msg1 &lt;- ifelse(nrow(rank1availCheck) &gt; 0, msg1, &#39;Primary products cover at least first rank children (see commodity tree).&#39;)
+  toDeviate2proc2 &lt;- unique(toDeviate2proc[, .( geographicAreaM49_fi, timePointYears, parent_secondary, parent_primary, 
+                                                availability_primary, processing, secondLevelProcessing, weight, 
+                                                extraction_rate, availability_secondary)])
+  # problems$primary &lt;- list(msg = msg1, tab = rank1availCheck[ , .(geographicAreaM49_fi,
+  #                                                                 timePointYears,
+  #                                                                 parent_secondary,
+  #                                                                 parent_primary,
+  #                                                                 availability_primary,
+  #                                                                 Value)])
+  
+  problems$primary &lt;- rank1availCheck[ , .(geographicAreaM49_fi,
+                                           timePointYears,
+                                           parent_secondary,
+                                           parent_primary,
+                                           availability_primary,
+                                           Value)]
+  
+  # If availability for secondary products was negative then production has been artificially increased so
+  # secondary availability is 0 and not negative
+  #toDeviate2proc2[availability_secondary &lt; 0, availability_secondary := 0]
+  # Check if enough secondary availability to cover unbalance
+  toDeviate2proc2[extraction_rate != 0 &amp; !is.na(extraction_rate), availability_secondary_primEq := availability_secondary/extraction_rate ]
+  toDeviate2proc2[parent_secondary %in% unique(treeNewER$parent), availability_secondary_primEq_tot := sum(availability_secondary_primEq, na.rm = TRUE), by = list(geographicAreaM49_fi,
+                                                                                                       timePointYears,
+                                                                                                       parent_primary) ]
+  checkingTab &lt;- unique(toDeviate2proc2[ , .(geographicAreaM49_fi, timePointYears, parent_primary, availability_primary, 
+                                             secondLevelProcessing, availability_secondary_primEq_tot)])
+  
+  # -- General insufficiency ----
+  insufficiency &lt;- checkingTab[availability_secondary_primEq_tot &lt; (-1)*secondLevelProcessing ]
+  
+  if(nrow(insufficiency) &gt; 0){
+    
+    problem &lt;- &#39;PROBLEM! Not enough secondary availability to cover production!&#39;
+    msg2 &lt;- list(problem,insufficiency)
+
+  }
+  msg2 &lt;- ifelse(nrow(insufficiency) &gt; 0, msg2, &#39;Total secondary availability can cover remaining secondary production. Level by level availability to be checked.&#39;)
+  
+  # problems$secondaryTot &lt;- list(msg = msg2, tab = insufficiency[ , .(geographicAreaM49_fi,
+  #                                                                    timePointYears,
+  #                                                                    parent_primary,
+  #                                                                    AvailableQuantity = (availability_secondary_primEq_tot),
+  #                                                                    Quantity2cover = (secondLevelProcessing)*(-1))])
+  
+  problems$secondaryTot &lt;- insufficiency[ , .(geographicAreaM49_fi,
+                                              timePointYears,
+                                              parent_primary,
+                                              AvailableQuantity = (availability_secondary_primEq_tot),
+                                              Quantity2cover = (secondLevelProcessing)*(-1))]
+#############################################################  
+#-- NEW PART ----  
+  # Put unrealistic values to primary products for which there is not enough availability to cover production
+  # data131covered &lt;- merge(data131, insufficiency[ , .(geographicAreaM49_fi, timePointYears, parent_primary, availability_primary)],
+  #       by.x = c(&#39;geographicAreaM49_fi&#39;, &#39;measuredItemFaostat_L2&#39;, &#39;timePointYears&#39;),
+  #       by.y = c(&#39;geographicAreaM49_fi&#39;, &#39;parent_primary&#39;, &#39;timePointYears&#39;),
+  #       all = TRUE)
+  # data131covered[!is.na(availability_primary), processing := -9999]
+  
+  # Exclude the products that cannot be covered
+  toDeviateCovered &lt;- merge(toDeviate2proc2[, .(geographicAreaM49_fi,
+                                   timePointYears,
+                                   parent_primary,
+                                   parent_secondary, 
+                                   secondLevelProcessing,
+                                   extraction_rate,
+                                   availability_secondary, 
+                                   availability_secondary_primEq)], 
+               insufficiency[ , .(geographicAreaM49_fi, timePointYears, parent_primary, availability_primary)], 
+               by = c(&#39;geographicAreaM49_fi&#39;, &#39;timePointYears&#39;, &#39;parent_primary&#39;), all = TRUE)
+  
+  toDeviateCovered &lt;- toDeviateCovered[!is.na(availability_primary)]
+  toDeviateCovered[ , availability_primary := NULL]
+  setkey(toDeviateCovered)
+  toDeviateCovered &lt;- unique(toDeviateCovered)
+  #######################################################################
+  # Consider all ICS product that can be parent
+  secondaryFP &lt;-  merge(unique(treeNewER[, .(parent, rank)]), toDeviateCovered,
+                        by.x = c(&quot;parent&quot;), 
+                        by.y = c(&quot;parent_secondary&quot;))
+  
+  #-- Rank 1 secondary parent ----
+  
+  # transform in secondary equivalent the excess of processing not covered by the primary
+  # secondaryFP[, secondLevelProcessing:= (secondLevelProcessing * extraction_rate)*(-1)]
+  secondaryFP[, secondLevelProcessing:= (secondLevelProcessing)*(-1)]
+  setkey(secondaryFP)
+  secondaryFP &lt;- unique(secondaryFP)
+  
+  # Maximum level of processing is 4 so creating space for it
+  secondaryFP[ , &#39;:=&#39; (rank1Processing = 0, thirdLevelProcessing = 0, 
+                       rank2Processing = 0, fourthLevelProcessing = 0, 
+                       rank3Processing = 0, fifthLevelProcessing = 0, rank4Processing = 0)]
+  
+  
+  #-- Rank 1 secondary parent ----
+  
+  # Calculation of first secondary parent food processing already in secondary equivalent
+  # rank1Processing = quantity of input covered by rank 1 parent
+  secondaryFP[ rank == 1, rank1Processing := ifelse(availability_secondary_primEq &gt; secondLevelProcessing,
+                                                    secondLevelProcessing*extraction_rate , availability_secondary) ]
+  
+  # Where there is need of second secondary parent
+  rank2needed &lt;- unique(secondaryFP[rank == 1 &amp; availability_secondary_primEq &lt; secondLevelProcessing, .(geographicAreaM49_fi, parent, timePointYears, parent_primary, secondLevelProcessing, availability_secondary_primEq) ])
+  
+ 
+  #-- Rank 2 secondary parent ----
+  
+  if(nrow(rank2needed) &gt; 0){
+    rank2needed[ , thirdLevelProcessing := secondLevelProcessing - availability_secondary_primEq]
+
+    # Merge to put the right third level processing
+    secondaryFPneeded &lt;- merge(secondaryFP[ rank == 2], rank2needed, 
+      by = c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;, &quot;parent_primary&quot;), all = TRUE, suffixes = c(&#39;_available&#39;, &#39;_needed&#39;))
+
+secondaryFPneeded[ is.na(thirdLevelProcessing_needed), thirdLevelProcessing_needed := 0 ]
+
+unavailable &lt;- secondaryFPneeded[is.na(parent_available)]
+
+if(nrow(unavailable) &gt; 0){
+  msg3 &lt;- paste(&#39;Not enough product to cover processing for primary group(s)&#39;, paste(unique(unavailable$parent_primary), collapse = &quot;, &quot;),
+                &quot;at level 2, for country&quot;, paste(unique(unavailable$geographicAreaM49_fi), collapse = &quot;, &quot;) )
+  message(msg3)
+}
+msg3 &lt;- ifelse(nrow(unavailable) &gt; 0, msg3, &#39;Enough rank 2 secondary parent to cover rank 3 children (see commodity tree).&#39;)
+
+# problems$secondary &lt;- list(msg = msg3, tab = unavailable[ , .(geographicAreaM49_fi,
+#                                                               timePointYears,
+#                                                               parent_primary,
+#                                                               parent_needed,
+#                                                               Quantity2cover = (thirdLevelProcessing_needed))] )
+
+problems$secondary &lt;- unavailable[ , .(geographicAreaM49_fi,
+                                       timePointYears,
+                                       parent_primary,
+                                       parent_needed,
+                                       Quantity2cover = (thirdLevelProcessing_needed))]
+
+
+secondaryFP2 &lt;- copy(secondaryFPneeded)
+secondaryFP2[is.na(parent_available), availability_secondary_primEq_available := 0]
+
+
+secondaryFP2 &lt;- secondaryFP2[ ,rank2Processing := ifelse(availability_secondary_primEq_available &gt; thirdLevelProcessing_needed, 
+                                           thirdLevelProcessing_needed *extraction_rate, 
+                                           availability_secondary_primEq_available*extraction_rate)]
+
+secondaryFP2 &lt;- secondaryFP2[  , .(geographicAreaM49_fi, timePointYears, parent_primary, parent_available, rank,
+                                   secondLevelProcessing_available, extraction_rate, availability_secondary,
+                                   availability_secondary_primEq_available, rank1Processing,
+                                   rank2Processing, fourthLevelProcessing, rank3Processing, fifthLevelProcessing, rank4Processing,
+                                   thirdLevelProcessing_needed)]
+setnames(secondaryFP2, names(secondaryFP2), gsub(&quot;_available&quot;, &quot;&quot;, names(secondaryFP2)))
+setnames(secondaryFP2, &#39;thirdLevelProcessing_needed&#39;, &#39;thirdLevelProcessing&#39;)
+    secondaryFP2 &lt;- rbind(secondaryFP2, secondaryFP[rank != 2, ])   
+    secondaryFP &lt;- secondaryFP2
+    # Where there is need of third secondary parent
+    
+    rank3needed &lt;- unique(secondaryFP2[rank == 2 &amp; availability_secondary_primEq &lt; thirdLevelProcessing, .(geographicAreaM49_fi, parent, timePointYears, parent_primary, thirdLevelProcessing, availability_secondary_primEq) ])
+    
+    #-- Rank 3 secondary parent ----
+    
+    if(nrow(rank3needed) &gt; 0){
+      rank3needed[ , fourthLevelProcessing := thirdLevelProcessing - availability_secondary_primEq]
+      
+      tertiaryFPneeded &lt;- merge(secondaryFP2[ rank == 3], rank3needed, 
+                                 by = c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;, &quot;parent_primary&quot;), all = TRUE, suffixes = c(&#39;_available&#39;, &#39;_needed&#39;))
+      
+      tertiaryFPneeded[is.na(fourthLevelProcessing_needed), fourthLevelProcessing_needed := 0 ]
+      
+      unavailable3 &lt;- tertiaryFPneeded[is.na(parent_available)]
+      
+      if(nrow(unavailable3) &gt; 0){
+        msg4 &lt;- paste(&#39;Not enough product to cover processing for primary group(s)&#39;, paste(unique(unavailable3$parent_primary), collapse = &quot;, &quot;),
+                      &quot;at level 3, for country &quot;, paste(unique(unavailable3$geographicAreaM49_fi ), collapse = &quot;, &quot;))
+        message(msg4)
+      }
+      msg4 &lt;- ifelse(nrow(unavailable3) &gt; 0, msg4, &#39;Enough rank 3 secondary parent to cover rank 4 children (see commodity tree).&#39;)
+    
+      # problems$tertiary &lt;- list(msg = msg4, tab = unavailable3[ , .(geographicAreaM49_fi,
+      #                                                               timePointYears,
+      #                                                               parent_primary,
+      #                                                               parent_needed,
+      #                                                               Quantity2cover = (fourthLevelProcessing_needed))] )
+      problems$tertiary &lt;- unavailable3[ , .(geographicAreaM49_fi,
+                                             timePointYears,
+                                             parent_primary,
+                                             parent_needed,
+                                             Quantity2cover = (fourthLevelProcessing_needed))]
+
+      
+      secondaryFP3 &lt;- copy(tertiaryFPneeded)
+      secondaryFP3[is.na(parent_available), availability_secondary_primEq_available := 0]
+      
+      secondaryFP3 &lt;- secondaryFP3[ ,rank3Processing := ifelse(availability_secondary_primEq_available &gt; fourthLevelProcessing_needed, 
+                                                               fourthLevelProcessing_needed *extraction_rate, 
+                                                               availability_secondary_primEq_available*extraction_rate)]
+      
+      secondaryFP3 &lt;- secondaryFP3[  , .(geographicAreaM49_fi, timePointYears, parent_primary, parent_available, rank,
+                                         secondLevelProcessing, extraction_rate, availability_secondary,
+                                         availability_secondary_primEq_available, rank1Processing, thirdLevelProcessing_available,
+                                         rank2Processing, rank3Processing, fifthLevelProcessing, rank4Processing,
+                                         fourthLevelProcessing_needed)]
+      setnames(secondaryFP3, names(secondaryFP3), gsub(&quot;_available&quot;, &quot;&quot;, names(secondaryFP3)))
+      setnames(secondaryFP3, &#39;fourthLevelProcessing_needed&#39;, &#39;fourthLevelProcessing&#39;)
+      secondaryFP3 &lt;- rbind(secondaryFP3, secondaryFP2[rank != 3, ])   
+      secondaryFP &lt;- secondaryFP3
+      
+      # Where there is need of fourth secondary parent
+      
+      rank4needed &lt;- unique(secondaryFP3[rank == 3 &amp; availability_secondary_primEq &lt; fourthLevelProcessing, .(geographicAreaM49_fi, parent, timePointYears, parent_primary, fourthLevelProcessing, availability_secondary_primEq) ])
+     
+      #-- Rank 4 secondary parent ----
+      if(nrow(rank4needed) &gt; 0 ){
+        rank4needed[ , fifthLevelProcessing := fourthLevelProcessing - availability_secondary_primEq]
+        
+        quaternaryFPneeded &lt;- merge(secondaryFP3[ rank == 4], rank4needed, 
+                                  by = c(&quot;geographicAreaM49_fi&quot;, &quot;timePointYears&quot;, &quot;parent_primary&quot;), all = TRUE, suffixes = c(&#39;_available&#39;, &#39;_needed&#39;))
+        
+        quaternaryFPneeded[ is.na(fifthLevelProcessing_needed), fifthLevelProcessing_needed := 0 ]
+        
+        unavailable4 &lt;- quaternaryFPneeded[is.na(parent_available)]
+        
+        if(nrow(unavailable4) &gt; 0){
+          msg5 &lt;- paste(&#39;Not enough product to cover processing for primary group(s)&#39;, paste(unique(unavailable4$parent_primary), collapse = &quot;, &quot;),
+                        &quot;at level 4, for country &quot;, paste(unique(unavailable4$geographicAreaM49_fi), collapse = &quot;, &quot;))
+          message(msg5)
+        }
+        msg5 &lt;- ifelse(nrow(unavailable4) &gt; 0, msg5, &#39;Enough rank 4 secondary parent to cover remaining children (see commodity tree).&#39;)
+        
+        # problems$quaternary &lt;- list(msg = msg5, tab =unavailable4[ , .(geographicAreaM49_fi,
+        #                                                                timePointYears,
+        #                                                                parent_primary,
+        #                                                                parent_needed,
+        #                                                                Quantity2cover = (fifthLevelProcessing_needed))])
+        # 
+        problems$quaternary &lt;- unavailable4[ , .(geographicAreaM49_fi,
+                                                 timePointYears,
+                                                 parent_primary,
+                                                 parent_needed,
+                                                 Quantity2cover = (fifthLevelProcessing_needed))]
+        
+        secondaryFP4 &lt;- copy(quaternaryFPneeded)
+        secondaryFP4[is.na(parent_available), availability_secondary_primEq_available := 0]
+        
+        secondaryFP4 &lt;- secondaryFP4[ ,rank4Processing := ifelse(availability_secondary_primEq_available &gt; fifthLevelProcessing_needed, 
+                                                                 fifthLevelProcessing_needed *extraction_rate, 
+                                                                 availability_secondary_primEq_available*extraction_rate)]
+        
+        secondaryFP4 &lt;- secondaryFP4[  , .(geographicAreaM49_fi, timePointYears, parent_primary, parent_available, rank,
+                                           secondLevelProcessing, extraction_rate, availability_secondary,
+                                           availability_secondary_primEq_available, rank1Processing, thirdLevelProcessing,
+                                           rank2Processing, fourthLevelProcessing_available, rank3Processing, 
+                                           fifthLevelProcessing_needed, rank4Processing)]
+        setnames(secondaryFP4, names(secondaryFP4), gsub(&quot;_available&quot;, &quot;&quot;, names(secondaryFP4)))
+        setnames(secondaryFP4, &#39;fifthLevelProcessing_needed&#39;, &#39;fifthLevelProcessing&#39;)
+        secondaryFP4 &lt;- rbind(secondaryFP4, secondaryFP3[rank != 4, ])   
+        secondaryFP &lt;- secondaryFP4
+        
+        
+        rank5needed &lt;- unique(secondaryFP4[rank == 4 &amp; availability_secondary_primEq &lt; fifthLevelProcessing,  ])
+        
+      }
+      
+    }
+    
+  }
+  
+  #-- Organising data ----
+  
+  processingLevelsComputed &lt;-  melt(secondaryFP, 
+                                    id.vars = c(&quot;parent&quot;,
+                                                &quot;rank&quot;, &quot;geographicAreaM49_fi&quot;,
+                                                &quot;timePointYears&quot;, &quot;parent_primary&quot;,
+                                                &quot;secondLevelProcessing&quot;, &quot;extraction_rate&quot;,
+                                                &quot;availability_secondary&quot;, &quot;availability_secondary_primEq&quot;),
+                                    measure.vars = c(&quot;rank1Processing&quot;, &quot;rank2Processing&quot;, &quot;rank3Processing&quot;, &quot;rank4Processing&quot;),
+                                    value.name = &quot;foodProcessingSecondary&quot;,
+                                    variable.name = &quot;levelOfProcessing&quot;)
+  
+   NotCovered &lt;- processingLevelsComputed[ , .(geographicAreaM49_fi, parent_primary, timePointYears, secondLevelProcessing, extraction_rate, foodProcessingSecondary)]
+   setkey(NotCovered)
+   NotCovered &lt;- unique(NotCovered)
+   if(nrow(NotCovered) &gt; 0){
+   NotCovered[ , foodProcessingSecondary_primEq := foodProcessingSecondary/extraction_rate ]
+   NotCovered[ , c(&#39;secondLevelProcessing&#39;,  &#39;foodProcessingSecondary_primEq&#39;) := list(secondLevelProcessing,
+                                                                                sum(foodProcessingSecondary_primEq)),
+               by = c(&#39;geographicAreaM49_fi&#39;, &#39;parent_primary&#39;, &#39;timePointYears&#39;)]
+  NotCovered[ , UncoveredQuantity := secondLevelProcessing - foodProcessingSecondary_primEq]
+  NotCovered &lt;- NotCovered[secondLevelProcessing &gt; foodProcessingSecondary_primEq]
+   }
+   
+  if(nrow(NotCovered) &gt; 0){
+  NotCovered &lt;- NotCovered[ , c(&#39;secondLevelProcessing&#39;,  &#39;foodProcessingSecondary&#39;, &#39;extraction_rate&#39;, &#39;foodProcessingSecondary_primEq&#39;) := NULL]
+  setkey(NotCovered)
+  NotCovered &lt;- unique(NotCovered)
+  problems$NotCovered &lt;- NotCovered
+  } else {
+    problems$NotCovered &lt;- data.table()
+   }
+  
+  processingLevelsAssigned &lt;- processingLevelsComputed[foodProcessingSecondary != 0]
+  
+  processingLevelsAssigned &lt;- processingLevelsAssigned[ , .(geographicAreaM49_fi, parent, timePointYears, 
+                                                            availability_secondary, foodProcessingSecondary)]
+  
+  setnames(processingLevelsAssigned, c(&quot;parent&quot;, &quot;availability_secondary&quot;, &quot;foodProcessingSecondary&quot;), 
+           c(&quot;measuredItemFaostat_L2&quot;, &quot;availability&quot;, &quot;processing&quot;))
+  
+  data131full &lt;- rbind(data131[ , secondLevelProcessing := NULL], processingLevelsAssigned)
+  } else {
+    
+    data131full &lt;- data131[ , secondLevelProcessing := NULL]
+    
+  } 
+  
+  
+  data131full[, measuredElementSuaFbs:=&quot;5023&quot;]
+  setnames(data131full, &quot;processing&quot;, &quot;Value&quot;)
+  
+  
+  
+  return(list(result = data131full,
+              problems = problems
+              )
+         )
+  
+}
+</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="PluginCode.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ShinyDes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
