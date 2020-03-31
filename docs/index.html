@@ -24,7 +24,7 @@
 <meta name="author" content="Charlotte Taglioni (Statistician, ESSD - Methodological Innovation Team)" />
 
 
-<meta name="date" content="2020-03-30" />
+<meta name="date" content="2020-03-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -167,7 +167,7 @@
 <div id="header">
 <h1 class="title">Migration of Fishery SUA and FBS compilation into the SWS</h1>
 <p class="author"><em>Charlotte Taglioni (Statistician, ESSD - Methodological Innovation Team)</em></p>
-<p class="date"><em>2020-03-30</em></p>
+<p class="date"><em>2020-03-31</em></p>
 </div>
 <div id="introduction" class="section level1 unnumbered">
 <h1><strong>Introduction</strong></h1>
@@ -181,7 +181,7 @@
 <h2><strong>Migration actors</strong></h2>
 <p>Any migration into the SWS requires the interaction between at least three actors:</p>
 <ol style="list-style-type: decimal">
-<li>The <strong>technical unit</strong> interested in automating either some or all its analytical processes in the SWS. The technical unit can be treated as client demanding services from the counterparts responsible for the implementation of its data and statistical assets in the SWS. Therefore, a successful FIAS - SWS migration depends on the coordination between the technical division and other parts. In the FIAS - SWS migration framework the technical unit is called FIAS and is represented by:</li>
+<li>The <strong>technical unit</strong> interested in automating either some or all its analytic processes in the SWS. The technical unit can be treated as client demanding services from the counterparts responsible for the implementation of its data and statistical assets in the SWS. Therefore, a successful FIAS - SWS migration depends on the coordination between the technical division and other parts. In the FIAS - SWS migration framework the technical unit is called FIAS and is represented by:</li>
 </ol>
 <ul>
 <li><strong>Stefania Vannuccini</strong> <em>Senior Fishery Officer, FIAS</em></li>
@@ -279,26 +279,17 @@
 <p>The whole historical series is extracted, starting from 1961, as very frequent revisions occur either in data or in species identification and product classifications.</p>
 <p>When updating a whole country, raw data for capture, aquaculture and commodities (production and trade), stored separately, have to be extracted, therefore the executable starts with:</p>
 <p>interacting between the existing local databases to extract and merge data from different sources:</p>
-<p>total fish production is first retrieved, manually, from the FishstatJ dataset “Global Production” (capture+aquaculture), already in aggregated form representing the 8 main groups and saved as a csv file.</p>
-<p>An executable picks up the csv production file, then connects in real time to the commodities database, extracts all trade figures (quantities and values) and aggregates them by main groups of species and also according to their utilization type. In fact at raw data level, each one of the main groups may contain up to 11 product types, which are conceived according to the kind of processing and manufacturing they are subject to (fish can be fresh, frozen, filleted, cured, canned, prepared, reduced to meal and oils, etc. ).</p>
-<p>The exec may also re-direct some commodities to another destination (i.e. from nei canned to pelagic canned) when controversies on species or product identification may have appeared or else to solve imbalances (this operation makes use of a linkage file duly filled during the years through an integrated procedure within the programme).</p>
-<p>Creation of a working spreadsheet in csv/excel, with coloured highlights on the cells presenting changes vs the existing database. The sheet can be modified, rows can be added or deleted and finally can be imported into the local extraction for balancing and analysis of final results of the updating.</p>
-<p>Balancing</p>
-<p>Products are balanced according to the following equation, valid for each series of primary and processed fishery commodities, prepared on a calendar-year basis:</p>
-<p>total food supply equals production,</p>
-<p>less reduction to meal and other non-food uses,</p>
-<p>plus imports,</p>
-<p>less exports,</p>
-<p>plus or less variation in stocks.</p>
-<p>The result of this equation corresponds to supply, i.e. food available for consumption.</p>
-<p>Specific food composition factors are then applied to the related supply of each product type in order to obtain calories, proteins and fats (reported as Appendix II)</p>
+<p>total fish production is first retrieved, manually, from the FishstatJ dataset “Global Production” (capture+aquaculture), already in aggregated form representing the 8 main groups and saved as a .csv file.</p>
+<p>An executable picks up the .csv production file, then connects in real time to the commodities database, extracts all trade figures (quantities and values) and aggregates them by main groups of species and also according to their utilization type. In fact at raw data level, each one of the main groups may contain up to 11 product types, which are conceived according to the kind of processing and manufacturing they are subject to (fish can be fresh, frozen, filleted, cured, canned, prepared, reduced to meal and oils, etc. ).</p>
+<p>The exec may also re-direct some commodities to another destination (i.e. from nei canned to pelagic canned) when controversies on species or product identification may have appeared or else to solve imbalances (this operation makes use of a linkage file duly filled during the years through an integrated procedure within the program).</p>
+<p>Creation of a working spreadsheet in .csv/excel, with colored highlights on the cells presenting changes vs the existing database. The sheet can be modified, rows can be added or deleted and finally can be imported into the local extraction for balancing and analysis of final results of the updating.</p>
 </div>
 <div id="standardization-to-fbs" class="section level3 unnumbered">
 <h3>Standardization to FBS</h3>
 <p>Once raw data are balanced, the final step is the conversion of each variable for each product type within each group of species into its corresponding live-weight equivalent, by making use of specific technical conversion factors.</p>
 <p>In practice, the reason why every processed fish food commodity is reconverted into its primary equivalent is to obtain comparable statistics in homogeneous units applicable to all countries in the world.</p>
 <p>The final output, FBS, available for dissemination is therefore represented by the series reconverted into their primary equivalent.</p>
-<p>Some differences occur in the way standardization is carried out according to FIAS and FAOSTAT methodologies. This difference has always existed. It mainly consists in the way trade data are handled, taking into account both edible and inedible products (as in FAOSTAT) or only the edible component (as in FIAS). The final result of the total food fish supply and per capita food fish supply is practically identical</p>
+<p>Some differences occur in the way standardization is carried out according to FIAS and FAOSTAT methodologies. This difference has always existed. It mainly consists in the way trade data are handled, taking into account both edible and inedible products (as in FAOSTAT) or only the edible component (as in FIAS). The final result of the total food fish supply and <em>per capita</em> food fish supply is practically identical</p>
 </div>
 <div id="fias-processed-production-in-sws-proposed-workflow" class="section level3 unnumbered">
 <h3>FIAS processed production in SWS: proposed workflow</h3>
@@ -309,7 +300,7 @@
 Figure 0.1:  General workflow for SUA/FBS compilation.
 </p>
 </div>
-<p>The first part of data collection and data entry is entirely performed by FIAS unit; the second part of data imputation and validation uses the ‘ad-hoc’ Shiny application described in paragraph <a href="#shiny"><strong>??</strong></a>; the third part is an R-plugin to be run on the SWS.</p>
+<p>The first part of data collection and data entry is entirely performed by FIAS unit; the second part of data imputation and validation uses the <em>ad-hoc</em> Shiny application described in paragraph <a href="#shiny"><strong>??</strong></a>; the third part is an R-plugin to be run on the SWS.</p>
 </div>
 </div>
 <div id="sws-resources" class="section level2 unnumbered">
@@ -318,7 +309,7 @@ Figure 0.1:  General workflow for SUA/FBS compilation.
 <p>Because of the semi-standardized code list the questionnaire use to collect them, fishery processed production data are initially stored in data tables and migrated to a dataset only at the end of the process. The only dataset involved in the FIAS processed production is the Commodity dataset which has the dimensions listed in the description below.</p>
 <div id="code-lists" class="section level3 unnumbered">
 <h3>Code lists</h3>
-<p>Code lists, also called reference lists in SWS parlance, are the dimensions making up the data sets that are designed by the user to store analytical results from SWS modules. Some dimensions are statistical-domain-specific and are defined by the technical unit to reflect its needs regarding data collection, processing, and dissemination while meeting FAO standards. Each data set dimension has a set of codes and their associated descriptions. Thus, code lists serve to the purpose of standardization, visualization, and metadata by associating standardized codes to standardized names in the SWS data set outputs. A typical SWS compliant data set has, therefore, the following dimensions/reference lists:</p>
+<p>Code lists, also called reference lists in SWS parlance, are the dimensions making up the data sets that are designed by the user to store analytic results from SWS modules. Some dimensions are statistical-domain-specific and are defined by the technical unit to reflect its needs regarding data collection, processing, and dissemination while meeting FAO standards. Each data set dimension has a set of codes and their associated descriptions. Thus, code lists serve to the purpose of standardization, visualization, and metadata by associating standardized codes to standardized names in the SWS data set outputs. A typical SWS compliant data set has, therefore, the following dimensions/reference lists:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Geographic area</strong>. Representing a spatial scale the information is measured at. For example, countries, territories, regional aggregates, regional special groups aggregates, global aggregates. In SWS, the geographic area dimension used by FIAS data sets is named <strong>geographicAreaM49_fi</strong>. The dimension is specific for FIAS unit as it was initially decided and confirmed in a meeting held on April 10, 2019.</p></li>
 <li><p><strong>Items</strong>. These one want to take a measurement from. For example, commodities, commodity groups, land use types, species, etc. The FIAS - SWS framework item code/reference for SUAs and FBSs are named: <strong>fisheriesAsfis</strong>, <strong>measuredItemISSCFC</strong>, <strong>measuredItemFaostat_L2</strong>.</p></li>
@@ -330,8 +321,8 @@ Figure 0.1:  General workflow for SUA/FBS compilation.
 </div>
 <div id="data-tables" class="section level3 unnumbered">
 <h3>Data tables</h3>
-<p>Data tables are mainly used to store information helping R modules to output analytical results. Information in data tables can be of a number of types. For example, conversion factors, arithmetic formulas, mapping between flags, mapping between international classifications, etc. Exceptionally, data are stored in data tables because of the initial codelist used by the FIAS unit to collect data. In SWS hierarchy, all data tables reside in a given statistical domain. In the FIAS - SWS migration framework, the data tables are mainly in the <strong>Fisheries Commodities</strong> domain and only the nutrients table in the <strong>Fishery</strong> domain. Below is a list of current available and filled data tables used in the SUA-FBS calculation process.</p>
-<p><strong>Note</strong>: These data tables, especially those for mapping purposes, have to be regularlychecked and updated inserting new links or new commodities or species codified.</p>
+<p>Data tables are mainly used to store information helping R modules to output analytic results. Information in data tables can be of a number of types. For example, conversion factors, arithmetic formulas, mapping between flags, mapping between international classifications, etc. Exceptionally, data are stored in data tables because of the initial code list used by the FIAS unit to collect data. In SWS hierarchy, all data tables reside in a given statistical domain. In the FIAS - SWS migration framework, the data tables are mainly in the <strong>Fisheries Commodities</strong> domain and only the nutrients table in the <strong>Fishery</strong> domain. Below is a list of current available and filled data tables used in the SUA-FBS calculation process.</p>
+<p><strong>Note</strong>: These data tables, especially those for mapping purposes, have to be regularly checked and updated inserting new links or new commodities or species codified.</p>
 <ol style="list-style-type: decimal">
 <li>Mapping data tables:</li>
 </ol>
@@ -352,7 +343,7 @@ Figure 0.1:  General workflow for SUA/FBS compilation.
 <li><p><strong>SUA-FBS: conversion SUA elements (from old FIAS code)</strong> (SWS identifier: <code>oldfias2measuredelement</code>) same as ‘oldfias2measuredelementfbs’ but for SUAs elements.</p></li>
 <li><p><strong>SUA-FBS: element sign table</strong> (SWS identifier: <code>element_sign_table</code>) table to assign the sign to all the elements in order to compute availability.</p></li>
 <li><p><strong>SUA-FBS: FAOSTAT FBS element from SUA</strong> (SWS identifier: <code>fi_faostat_standardization_element</code>) table to group SUA elements into FBS elements because sometimes SUAs elements are aggregated into one FBS element or the code is different.</p></li>
-<li><p><strong>SUA-FBS: fbs_fias_tot2019</strong> (SWS identifier: <code>fbs_fias_tot2019</code>) since the dimension ‘measuredItemFaostat_L2’ does not contain a code for the totalof all groups, the table stores thess totals.</p></li>
+<li><p><strong>SUA-FBS: fbs_fias_tot2019</strong> (SWS identifier: <code>fbs_fias_tot2019</code>) since the dimension ‘measuredItemFaostat_L2’ does not contain a code for the total of all groups, the table stores these totals.</p></li>
 <li><p><strong>SUA-FBS: Fisheries commodity tree</strong> (SWS identifier: <code>fi_commodity_tree</code>) specifies the commodity tree for ICS product including both primary and secondary parents. The table also contains default extraction rates and the rank of ‘parenthood’ used for the food processing computation.</p></li>
 <li><p><strong>SUA-FBS: Flag conversion (from old FIAS)</strong> (SWS identifier: <code>oldfias2flags</code>) to convert old FIAS flags into SDMX flag system.</p></li>
 <li><p><strong>SUA-FBS: Global Production mapping</strong> (SWS identifier: <code>gp_mapping</code>) same as the ‘cd_mapping’ table but redirecting species into different ICS products.</p></li>
@@ -389,7 +380,7 @@ Figure 0.1:  General workflow for SUA/FBS compilation.
 </div>
 <div id="definition-and-conversion-of-sua-fbs-elements" class="section level2 unnumbered">
 <h2>Definition and conversion of SUA-FBS Elements</h2>
-<p>The integration of the statistical processes to produce the Supply Utilization Accounts (SUAs) and Food Balance Sheets (FBSs) for the Fisheries and Aquaculture Statistics and Information Branch (FIAS) into the Statistical Working System (SWS) requires the harmonisation of Element codes currently used by FIAS. The new codes are already in use in the SWS for producing the SUA/FBS of crops and livestock food items and are consistent with FAOSTAT. The conversion tables proposed in this document aim to reflect the current variables and their codes in use by FIAS with no or minimum discrepancy. Nevertheless, the conversion also seeks consistency with other domains. Consistency helps to integrate the same elements from separate domains and simplifies the standardization needed to produce the FBSs including fish products. Proposed changes mainly concern units of measure and labels.</p>
+<p>The integration of the statistical processes to produce the Supply Utilization Accounts (SUAs) and Food Balance Sheets (FBSs) for the Fisheries and Aquaculture Statistics and Information Branch (FIAS) into the Statistical Working System (SWS) requires the harmonization of Element codes currently used by FIAS. The new codes are already in use in the SWS for producing the SUA/FBS of crops and livestock food items and are consistent with FAOSTAT. The conversion tables proposed in this document aim to reflect the current variables and their codes in use by FIAS with no or minimum discrepancy. Nevertheless, the conversion also seeks consistency with other domains. Consistency helps to integrate the same elements from separate domains and simplifies the standardization needed to produce the FBSs including fish products. Proposed changes mainly concern units of measure and labels.</p>
 <p>List of the SUA elements used by FIAS:</p>
 <table style="width:100%;">
 <colgroup>
@@ -560,14 +551,14 @@ Figure 0.3: FBS elements according to FIAS standardization with corresponding SU
 </div>
 <p>A brief description of the FBS elements as provided by FIAS:</p>
 <p><strong>Production</strong>: Production figures relate to the total national fish production in terms of live-weight (i.e. the actual ex-water weight at the time of capture or removal from aquatic environment). Production figures cover capture and aquaculture data of all fish, crustaceans, molluscs and aquatic organisms, excluding mammals and aquatic plants.</p>
-<p><strong>Other uses</strong>: Includes reduction to fishmeal and fish oil; utilization of aquatic products for feed and bait; ornamental purposes; withdrawals from markets; and any other non-food use of fishery production. Waste is not included.</p>
+<p><strong>Other uses</strong>: Includes reduction to fish meal and fish oil; utilization of aquatic products for feed and bait; ornamental purposes; withdrawals from markets; and any other non-food use of fishery production. Waste is not included.</p>
 <p><strong>Imports</strong>: This covers all movements of commercial trade into the country of fish and fish products. Data on imports include fish caught by foreign fishing vessels and landed in domestic ports. A difference occurs in the way imports (as exports) data are recorded for the FBS of fish and fish products disseminated by FIAS and the ones disseminated by Faostat.</p>
 <p><strong>Exports</strong>: This covers all movements out of the country of fish and fish products. Data on exports include re-exports and fish caught by domestic fishing vessels and landed directly in foreign ports.</p>
 <p><strong>Stock variations</strong>: This category refers to changes in stocks occurring at all levels between the production and the retail levels. It covers changes in government stocks, in stocks with manufacturers, importers, exporters, other wholesale and retail merchants, transport and storage enterprises. Information on changes in stocks is often not available or incomplete for a number of countries and important commodities. In many instances data refer to the minimum information required to avoid a negative balance.</p>
 <p><strong>Total Food Fish Supply</strong>: There are various ways of defining “supply” and, in fact, various concepts are in use. The elements involved are production, imports, exports and changes in stocks (increases or decreases). There is no doubt that production, imports and decreases in stocks are genuine supply elements. Exports and increases in stocks might, however, be considered as utilization elements. Accordingly, the following is the way of calculating “supply” according to FAO methodology:</p>
 <p><em>Production (excluding non-food uses) + Imports - Exports + or - Changes in stocks = Total supply for human consumption</em></p>
-<p><strong>Population</strong>: Refers to the present-in-area (de facto) population, i.e. includes all persons physically present within the geographical boundaries of countries. In general, the population data used are mid-year estimates published for each country by the Population Division of the UN.</p>
-<p><strong>Per Capita Supply</strong>: Data under this category indicate the per capita food-fish supplies available for human consumption during a given reference period. It is derived by dividing the Total Food Supply by the Population.</p>
+<p><strong>Population</strong>: Refers to the present-in-area population, i.e. includes all persons physically present within the geographical boundaries of countries. In general, the population data used are mid-year estimates published for each country by the Population Division of the UN.</p>
+<p><strong>Per Capita Supply</strong>: Data under this category indicate the <em>per capita</em> food-fish supplies available for human consumption during a given reference period. It is derived by dividing the Total Food Supply by the Population.</p>
 <p><strong>Live weight</strong>: The weight of finfish and shellfish at the time of their capture or harvest. Calculated on the basis of conversion factors from landed to nominal weight and on rates prevailing among national industries for each type of processing.</p>
 </div>
 <div id="faostat-standardized-fbs-element-conversion" class="section level3 unnumbered">
